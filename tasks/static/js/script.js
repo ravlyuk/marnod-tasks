@@ -1,4 +1,4 @@
-jQuery(document).ready(function($){
+$(document).ready(function () {
     $(document).on('click', '.checkbox', function () {
         $(this).parent().addClass('completed');
         $(this).attr('disabled', true);
