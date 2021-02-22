@@ -200,8 +200,6 @@ class TaskListView(LoginRequiredMixin, ListView):
 
         user_tasks = {t: list(t.tags.all()) for t in user_tasks}
 
-        print(f'{user_tasks=}')
-
         for t in user_tasks:
             task_tags = t.tags.all()
             if task_tags:
