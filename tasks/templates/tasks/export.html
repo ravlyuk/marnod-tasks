@@ -5,7 +5,11 @@
 {% block main_content %}
 <h1>Экспорт задач</h1>
 <p>На вашу почту придёт емейл с задачами. Уточните список.</p>
-<form action="." method="post">
+{% if tag_pk %}
+<form action={% url "tasks:export_by_tag" tag_pk %} method="post">
+{% else %}
+<form action='.' method="post">
+{% endif %}
     {{ form.as_p }}
     {% csrf_token %}
     <p>

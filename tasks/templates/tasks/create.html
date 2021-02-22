@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}Создать задачу{% endblock %}
 
 {% block main_content %}
 <h1>Создать задачу</h1>
 <form action="." method="post">
-    {{ form.as_p }}
+    {{ form|crispy}}
     {% csrf_token %}
     <p><button class="add" type="submit">Добавить</button></p>
 </form>

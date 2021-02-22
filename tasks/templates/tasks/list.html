@@ -7,13 +7,45 @@
 <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 {% endblock %}
 
-{% block main_content %}
-<h1>Текущие задачи</h1>
+{% block body-theme %}{{ theme }}{% endblock %}
 
+{% block main_content %}
+<h1 class="theme">Текущие задачи</h1>
+<p>Колличество задач: {{ user_tasks|length }}</p>
+
+{% if tag %}
+<p><i class="fa fa-download"></i>&nbsp;<a href={% url "tasks:export_by_tag" tag.pk %}>экспорт по тегу</a></p>
+{% else %}
 <p><i class="fa fa-download"></i>&nbsp;<a href={% url "tasks:export" %}>экспорт</a></p>
+{% endif %}
+
+
+{% for t in all_tags %}
+{% if forloop.first %}
+<ul class="list-inline">
+    <li class="list-inline-item">тэги:</li>
+    {% endif %}
+    <li class="list-inline-item">
+        <a href={% url "tasks:list_by_tag" t.slug %}>
+        {% if t.pk == tag.pk %}
+        <span class="badge badge-success">{{ t.name }}</span>
+        {% else %}
+        <span class="badge badge-info">{{ t.name }}</span>
+        {% endif %}
+        </a>
+    </li>
+    {% if forloop.last %}
+</ul>{% endif %}
+{% endfor %}
+
+{% if tag %}
+<a href={% url 'tasks:list' %}>Вернуться к общему списку задач</a>
+{% endif %}
+
+<hr/>
 
 <ul id="todo-list">
-    {% for task in tasks %}
+    {% for task, tags in user_tasks.items %}
     {% if task.is_completed %}
     <li class="completed">
         <input class='checkbox' data-uid={{ task.id }} type='checkbox'
@@ -22,7 +54,6 @@
     <li>
         <input class='checkbox' data-uid={{ task.id }} type='checkbox'/>
         {% endif %}
-
         {% if task.priority == task.PRIORITY_HIGH %}
         <span class="badge badge-pill badge-danger">&nbsp;</span>
         {% elif task.priority == task.PRIORITY_MEDIUM %}
@@ -31,7 +62,11 @@
         <span class="badge badge-pill badge-success">&nbsp;</span>
         {% endif %}
 
-        <a href={% url 'tasks:details' task.id %}>{{ task }}</a>
+        <a href={% url 'tasks:details' task.id %}>{{ task }} </a>
+        {% for task_tag in tags %}
+        <a href="{% url 'tasks:list_by_tag' task_tag.slug %}" class="badge badge-primary">{{task_tag}}</a>
+        {% endfor %}
+
         <a class="remove" href={% url 'tasks:delete' task.id %}>X</a>
         <hr/>
     </li>

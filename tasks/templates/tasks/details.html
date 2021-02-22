@@ -3,12 +3,17 @@
 
 {% block main_content %}
 <h1>Задача</h1>
+<p>Тэг:
+    {% for task_tag in tags %}
+     <a href="{% url 'tasks:list_by_tag' task_tag.slug %}" class="badge badge-primary">{{task_tag}}</a>
+    {% endfor %}
+</p>
 <p><b>Описание</b>: {{ object }}</p>
 <ul>
     <li>
         {{ object.is_completed|yesno:"Задача выполнена,Задача ещё не выполнена" }}
     </li>
-    <li><i class="far fa-calendar-alt"></i>&nbsp;Создана: {{ object.created|date:"Y-b-d H:i" }}</li>
+    <li><i class="far fa-calendar-alt"></i>&nbsp;Создана: {{ object.created|date:"Y-b-d H:i" }}, {{ days }} {{ days_name }} назад</li>
     <li><i class="far fa-clock"></i>&nbsp;Последнее изменение: {{ object.updated|date:"Y-b-d H:i" }}</li>
     <li><i class="far fa-edit"></i>&nbsp;<a href={% url "tasks:edit" pk=object.pk %}>Редактировать</a></li>
 </ul>

@@ -18,11 +18,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
             integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
             crossorigin="anonymous"></script>
+
     {% block extra_head %}
     {% endblock %}
 </head>
-<body>
+<body class="{% block body-theme %}{% endblock %}">
+
+
 <div class="container">
+
     <div class="row">
 
         <div class="side_bar col">
@@ -33,9 +37,10 @@
             <img src="{{ user.profile.avatar.url }}" class="img-fluid">
             {% endif %}
             <ul>
-                <li><a href="#">профиль</a></li>
+                <li><a href={% url "edit" %}>профиль</a></li>
                 <li><a href={% url "tasks:create" %}>добавить задачу</a></li>
                 <li><a href={% url "tasks:list" %}>задачи</a></li>
+                <li><a href={% url "tasks:group-list" %}>приоритеты</a></li>
                 <li><a href={% url "logout" %}>выйти</a></li>
             </ul>
             {% endif %}
@@ -47,7 +52,7 @@
             <div class="row">
                 <ul class="messages">
                     {% for message in messages %}
-                    <li class="alert alert-{{ message.tags }} alert-dismissable">
+                    <li class="theme alert alert-{{ message.tags }} alert-dismissable">
                         {{ message }} <a href="#" class="close" data-dismiss="alert"> x</a>
                     </li>
                     {% endfor %}
@@ -59,4 +64,6 @@
             {% endblock %}
         </div>
     </div>
+</div>
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 </body>

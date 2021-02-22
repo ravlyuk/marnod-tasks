@@ -1,9 +1,31 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
+from taggit.models import Tag, TaggedItem
+from django.template.defaultfilters import slugify
+from unidecode import unidecode
 
+
+class RuTag(Tag):
+    class Meta:
+        proxy = True
+
+    def slugify(self, tag, i=None):
+        return slugify(unidecode(self.name))[:128]
+
+
+class RuTaggedItem(TaggedItem):
+    class Meta:
+        proxy = True
+
+    @classmethod
+    def tag_model(cls):
+        return RuTag
+    
 
 class TodoItem(models.Model):
+    tags = TaggableManager(through=RuTaggedItem)
     PRIORITY_HIGH = 1
     PRIORITY_MEDIUM = 2
     PRIORITY_LOW = 3

@@ -1,12 +1,36 @@
 {% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
 {% block title %}Изменить профиль{% endblock %}
+
 {% block main_content %}
 <h1>Изменить профиль</h1>
+<p><a href={% url 'tasks:success-list' %}>Все невыполненные задания</a></p>
 <p>Используйте форму ниже чтобы что-то поменять в профиле:</p>
 <form action="." method="post" enctype="multipart/form-data">
-    {{ user_form.as_p }}
-    {{ profile_form.as_p }}
-    {% csrf_token %}
-    <button type="submit">Сохранить</button>
+    <div class="form-group mb-2">
+        <div class="row">
+            <div class="col-6">
+                {{ user_form.first_name|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ user_form.last_name|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ user_form.email|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ profile_form.birthdate|as_crispy_field }}
+            </div>
+        </div>
+        <div>
+            {{ profile_form.avatar|as_crispy_field }}
+        </div>
+        {% csrf_token %}
+        <button type="submit">Сохранить</button>
+    </div>
 </form>
 {% endblock %}
