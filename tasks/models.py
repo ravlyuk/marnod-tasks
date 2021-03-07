@@ -22,7 +22,7 @@ class RuTaggedItem(TaggedItem):
     @classmethod
     def tag_model(cls):
         return RuTag
-    
+
 
 class TodoItem(models.Model):
     tags = TaggableManager(through=RuTaggedItem)
@@ -58,3 +58,10 @@ class TodoItem(models.Model):
 
     class Meta:
         ordering = ('-created',)
+
+
+class TagCount(models.Model):
+    tag_slug = models.CharField(max_length=128)
+    tag_name = models.CharField(max_length=128)
+    tag_id = models.PositiveIntegerField(default=0)
+    tag_count = models.PositiveIntegerField(db_index=True, default=0)

@@ -16,11 +16,26 @@ from django.shortcuts import get_object_or_404
 from datetime import datetime, timezone
 from taggit.managers import TaggableManager
 from taggit.models import Tag
+from django.db.models import Count
 
 
 @login_required
 def index(request):
-    return HttpResponse("Примитивный ответ из приложения tasks")
+    counts = Tag.objects.annotate(
+        total_tasks=Count('todoitem')
+    ).order_by("-total_tasks")
+    counts = {
+        c.name: c.total_tasks
+        for c in counts
+    }
+
+    return render(request, "tasks/index.html", {"counts": counts})
+
+# @login_required
+# def index(request):
+#     import random
+#     counts = {t.name: random.randint(1, 100) for t in Tag.objects.all()}
+#     return render(request, "tasks/index.html", {"counts": counts})
 
 
 def complete_task(request, pk):

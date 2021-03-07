@@ -4,7 +4,6 @@ from . import views
 app_name = "tasks"
 
 urlpatterns = [
-    path("", views.index, name="index"),
     path("list/tag/<slug:tag_slug>", views.TaskListView.as_view(), name="list_by_tag"),
     path("list/", views.TaskListView.as_view(), name="list"),
     path("success-list/", views.SuccessListView.as_view(), name="success-list"),

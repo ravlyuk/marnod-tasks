@@ -14,7 +14,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "4%w^0ig86f1l^r2rn3-e8gk9bjn08ag2)j9ag
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['0.0.0.0', '35.176.26.105']
 
 # Application definition
 
@@ -134,3 +134,10 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'default from email'
 
 django_heroku.settings(locals())
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
