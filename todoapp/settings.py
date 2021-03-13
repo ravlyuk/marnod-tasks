@@ -115,8 +115,8 @@ USE_TZ = True
 STATIC_URL = '/staticfiles/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-MEDIA_URL = "/mediafiles/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 LOGIN_REDIRECT_URL = "tasks:list"
 
