@@ -1,29 +1,23 @@
 import os
 from pathlib import Path
 
-# import django_heroku
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# SECURITY WARNING: keep the secret key used in production secret!
+print('MEDIA_ROOT', MEDIA_ROOT)
+
 SECRET_KEY = os.environ.get("SECRET_KEY", "4%w^0ig86f1l^r2rn3-e8gk9bjn08ag2)j9ag(v!6x-*wde7m!")
 # SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '35.178.205.230']
-# ALLOWED_HOSTS = ['127.0.0.1']
-
-STATIC_URL = '/staticfiles/'
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = '/media/'
+# ALLOWED_HOSTS = ['0.0.0.0', '35.178.205.230']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -70,10 +64,6 @@ TEMPLATES = [
     },
 ]
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
-
 WSGI_APPLICATION = 'todoapp.wsgi.application'
 
 # Database
@@ -82,7 +72,7 @@ WSGI_APPLICATION = 'todoapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -112,9 +102,7 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
