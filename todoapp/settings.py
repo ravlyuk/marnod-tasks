@@ -4,16 +4,13 @@ from pathlib import Path
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATICFILES_DIRS = (
-  os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-print('MEDIA_ROOT', MEDIA_ROOT)
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "4%w^0ig86f1l^r2rn3-e8gk9bjn08ag2)j9ag(v!6x-*wde7m!")
 # SECRET_KEY = os.environ.get("SECRET_KEY")
