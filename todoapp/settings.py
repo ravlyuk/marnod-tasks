@@ -4,7 +4,11 @@ from pathlib import Path
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+STATICFILES_DIRS = (
+  os.path.join(BASE_DIR, 'static'),
+)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -16,8 +20,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "4%w^0ig86f1l^r2rn3-e8gk9bjn08ag2)j9ag
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['0.0.0.0', '18.133.223.178']
-# ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['0.0.0.0', '18.133.223.178']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 

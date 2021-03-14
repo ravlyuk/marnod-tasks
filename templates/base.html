@@ -37,11 +37,11 @@
             <img src="{{ user.profile.avatar.url }}" class="img-fluid">
             {% endif %}
             <ul>
-                <li><a href={% url "edit" %}>профиль</a></li>
-                <li><a href={% url "tasks:create" %}>добавить задачу</a></li>
-                <li><a href={% url "tasks:list" %}>задачи</a></li>
-                <li><a href={% url "tasks:group-list" %}>приоритеты</a></li>
-                <li><a href={% url "logout" %}>выйти</a></li>
+                <li><i class="far fa-user"></i><a href={% url "edit" %}> профиль</a></li>
+                <li><i class="fa fa-plus"></i><a href={% url "tasks:create" %}> добавить задачу</a></li>
+                <li><i class="fas fa-clipboard-list"></i><a href={% url "tasks:list" %}> задачи</a></li>
+                <li><i class="fas fa-clipboard-list"></i><a href={% url "tasks:group-list" %}> приоритеты</a></li>
+                <li><i class="fa fa-sign-out-alt"></i><a href={% url "logout" %}> выйти</a></li>
             </ul>
             {% endif %}
             {% endblock %}
