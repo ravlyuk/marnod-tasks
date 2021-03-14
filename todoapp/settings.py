@@ -15,7 +15,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = os.environ.get("SECRET_KEY", "4%w^0ig86f1l^r2rn3-e8gk9bjn08ag2)j9ag(v!6x-*wde7m!")
 # SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0', '18.133.223.178']
 # ALLOWED_HOSTS = ['*']
