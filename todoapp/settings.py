@@ -18,10 +18,10 @@ print('MEDIA_ROOT', MEDIA_ROOT)
 SECRET_KEY = os.environ.get("SECRET_KEY", "4%w^0ig86f1l^r2rn3-e8gk9bjn08ag2)j9ag(v!6x-*wde7m!")
 # SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = False
+DEBUG = True
 
-# ALLOWED_HOSTS = ['0.0.0.0', '18.133.223.178']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['0.0.0.0', '18.133.223.178']
+# ALLOWED_HOSTS = ['*']
 
 # Application definition
 
