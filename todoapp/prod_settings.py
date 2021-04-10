@@ -6,7 +6,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "4%w^0ig86f1l^rп2rn3-e8gk9bjn0j9ag(v!
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '172.31.31.141']
+ALLOWED_HOSTS = ['0.0.0.0', '18.135.102.68']
 
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # STATICFILES_DIRS = [STATIC_DIR]
