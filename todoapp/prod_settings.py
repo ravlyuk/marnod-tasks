@@ -13,4 +13,4 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# https://youtu.be/mp4rwP7Ny_A?t=5557
+# https://youtu.be/mp4rwP7Ny_A?t=6261
