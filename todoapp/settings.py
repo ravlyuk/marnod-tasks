@@ -75,7 +75,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'todo_db',
         'USER': 'yerav',
-        'PASSWORD': 'Za2leyhzjkrx@',
+        'PASSWORD': 'Za2leyhzjkrx',
         'PORT': 5432
     }
 }
