@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name http://3.10.212.247; # здесь прописать или IP-адрес или доменное имя сервера
+    server_name http://35.176.120.164; # здесь прописать или IP-адрес или доменное имя сервера
     access_log  /var/log/nginx/example.log;
 
     location /static/ {
